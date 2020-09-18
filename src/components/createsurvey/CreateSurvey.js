@@ -74,7 +74,7 @@ const CreateSurvey = (props) => {
                                 <div className='option-wrapper' key={index}>
                                     <input
                                         type='text'
-                                        placeholder='option1'
+                                        placeholder={`option${index+1}`}
                                         name={index}
                                         value={currMultiOptions[index]}
                                         onChange={(e) => onMultiSelectOptionChange(e, index)} /> <span onClick={incrementOption}>+</span> <span onClick={decrementOption}>-</span>
@@ -119,13 +119,12 @@ const CreateSurvey = (props) => {
             let prevCount = countCurrMultiOptions;
             prevCount++;
             setCountCurrMutiOptions(prevCount);
-            setCurrMultiOptions(prevOptions => [...prevOptions, ''])
-            // console.log('incrementing countCurrMultiOptions');
+            setCurrMultiOptions(prevOptions => [...prevOptions, '']);
         }
     }
 
     const decrementOption = () => {
-        setShowButtons(true);
+        setShowButtons(false);
         // console.log('decrement option called');
         if (countCurrMultiOptions === 0) {
             console.log('Cannot decrement further');
