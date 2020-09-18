@@ -1,0 +1,9 @@
+.app-header{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(133, 131, 131, 0.801);
+}

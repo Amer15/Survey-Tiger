@@ -1,0 +1,87 @@
+.conformation-container{
+    /* background: rgb(103, 126, 170); */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.single-select-container{
+    width: 50%;
+    padding: 10px 6px;
+    margin: 8px 0;
+}
+
+.multi-select-container{
+    width: 50%;
+    padding: 10px 6px;
+    margin: 8px 0;
+}
+
+.multi-select-container p,
+.single-select-container p{
+    margin-left: 2px;
+}
+
+.multi-select-options{
+    margin-top: 8px;
+    padding: 6px;
+}
+
+.multi-select-options div{
+    margin: 6px 0;
+}
+
+.multi-select-options div input{
+    margin-right: 4px;
+}
+
+.single-select-options{
+    display: flex;
+    margin-top: 8px;
+    padding: 4px;
+}
+
+.single-select-options div input{
+    margin-right: 4px;
+}
+
+.single-select-option2{
+  margin-left: 10px;   
+}
+
+.publishBtn-container{
+    margin-top: 60px;
+    margin-bottom: 20px;
+    /* background: yellow; */
+    display: flex;
+    justify-content: center;
+}
+
+.publishBtn-container button{
+  padding: 10px 20px;
+  background:#0984e3;
+  width: 180px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.publishBtn-container button:hover{
+    opacity: 0.9;
+    transition: all 0.4ms ease;
+}
+
+@media screen and (max-width:580px){
+    .single-select-container{
+        width: 85%;
+    }
+
+    .multi-select-container{
+        width: 85%;
+    }
+}
