@@ -20,13 +20,13 @@ const PublishQstns = ({ history }) => {
                 <div className='single-select-options'>
                     <div>
                         <input type='radio' id='option1'
-                            name='single-select'
+                            name={`single-select-${index}`}
                             value={qstn.options[0]} />
                         <label htmlFor='option1'>{qstn.options[0]}</label>
                     </div>
                     <div className='single-select-option2'>
                         <input type='radio' id='option2'
-                            name='single-select'
+                            name={`single-select-${index}`}
                             value={qstn.options[1]} />
                         <label htmlFor='option2'>{qstn.options[1]}</label>
                     </div>

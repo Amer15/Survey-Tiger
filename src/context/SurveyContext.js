@@ -15,6 +15,11 @@ export const SurveyProvider = (props) => {
             type: 'single-select',
             question: 'Do you have LinkedIn installed ?',
             options: ['Yes', 'No']
+        },
+        {
+            type: 'single-select',
+            question: 'Do you have Youtube installed ?',
+            options: ['Yes', 'No']
         }
     ]
 

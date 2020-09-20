@@ -14,17 +14,15 @@ const CreateSurvey = (props) => {
 
     const [surveyType, setSuveyType] = useState('');// For Select Options Value
     const [showSurveyType, setShowSurveyType] = useState(true); //For showing Select Input
-    const [countCurrMultiOptions, setCountCurrMutiOptions] = useState(0); //Options Count
+    const [multiOptionsCount, setMultiOptionsCount] = useState(0); //Options Count
     const [currMultiQtsn, setCurrMultiQstn] = useState(''); // For MutiSelect Question
     const [currMultiOptions, setCurrMultiOptions] = useState(['']) //For MultiSelect options
-    const [showButtons, setShowButtons] = useState(false); // For Showing Add and publish btns
-    // const [showConfirmToPublish, setShowConfirmToPublish] = useState(false);
+    const [showButtons,setShowButtons] = useState(false); // For Showing Add and publish btns
     const [currSingleQtsn, setCurrSingleQstn] = useState(''); //For SingleSelect Question
     const [currSingleOptions, setCurrSingleOptions] = useState(['', '']); //For SngleSlct options
 
     //Toast Notifications
     const notify = (type, value) => {
-        // console.log('toast called')
         if (type === 'success') {
             toast.success(value, { autoClose: 3000 });
         }
@@ -111,34 +109,30 @@ const CreateSurvey = (props) => {
 
     //Multi Select Input Methods
     const incrementOption = () => {
-        if (countCurrMultiOptions === 3) {
-            // console.log('Now show publish OR ADD btns');
-            setShowButtons(true);
-        }
-        else {
-            let prevCount = countCurrMultiOptions;
+        if (multiOptionsCount < 3) {
+            let prevCount = multiOptionsCount;
             prevCount++;
-            setCountCurrMutiOptions(prevCount);
+            setMultiOptionsCount(prevCount);
             setCurrMultiOptions(prevOptions => [...prevOptions, '']);
+        }
+        else{
+            notify('error', 'Four options are maximum, failed to add more');
         }
     }
 
     const decrementOption = () => {
-        setShowButtons(false);
-        // console.log('decrement option called');
-        if (countCurrMultiOptions === 0) {
-            console.log('Cannot decrement further');
-        }
-        else {
-            // console.log('derementing countCurrMultiOptions');
-            let prevCount = countCurrMultiOptions;
+        if (multiOptionsCount > 0) {
+            let prevCount = multiOptionsCount;
             prevCount--;
-            setCountCurrMutiOptions(prevCount);
+            setMultiOptionsCount(prevCount);
             setCurrMultiOptions(prevOptions => {
                 let Options = [...prevOptions];
                 prevOptions.pop();
                 return Options;
             });
+        }
+        else{
+            notify('error', 'One option is minimum, failed to remove');
         }
     }
 
@@ -212,7 +206,7 @@ const CreateSurvey = (props) => {
             setCurrMultiOptions(['']);
             setShowButtons(false);
             setSuveyType('');
-            setCountCurrMutiOptions(0);
+            setMultiOptionsCount(0);
             setShowSurveyType(true);
             notify('success', 'Question added successfully');
         }
@@ -286,7 +280,7 @@ const CreateSurvey = (props) => {
                 {surveyType === 'single-select' ? createSurvey('single-select') : null}
             </div>
             {
-                showButtons ? (<div className='btns-wrapper'>
+                multiOptionsCount === 3 || showButtons ? (<div className='btns-wrapper'>
                     <button onClick={() => addQstnHandler(surveyType)}>Add Question</button>
                     <button onClick={() => publishQstnHandler(surveyType)}>Publish</button> 
                 </div>) : null
