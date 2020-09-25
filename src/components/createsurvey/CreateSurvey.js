@@ -75,7 +75,8 @@ const CreateSurvey = (props) => {
                                         placeholder={`option${index+1}`}
                                         name={index}
                                         value={currMultiOptions[index]}
-                                        onChange={(e) => onMultiSelectOptionChange(e, index)} /> <span onClick={incrementOption}>+</span> <span onClick={decrementOption}>-</span>
+                                        onChange={(e) => onMultiSelectOptionChange(e, index)} /> <span onClick={incrementOption}>+</span> 
+                                        <span onClick={decrementOption}>-</span>
                                 </div>
                             );
                         })}
@@ -127,7 +128,7 @@ const CreateSurvey = (props) => {
             setMultiOptionsCount(prevCount);
             setCurrMultiOptions(prevOptions => {
                 let Options = [...prevOptions];
-                prevOptions.pop();
+                Options.pop();
                 return Options;
             });
         }
@@ -263,6 +264,10 @@ const CreateSurvey = (props) => {
             props.history.push('/publish');
         }
     }
+
+
+    console.log(multiOptionsCount);
+    console.log(currMultiOptions);
 
   
     return (
