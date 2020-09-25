@@ -117,7 +117,7 @@ const CreateSurvey = (props) => {
             setCurrMultiOptions(prevOptions => [...prevOptions, '']);
         }
         else{
-            notify('error', 'Four options are maximum, failed to add more');
+            notify('error', `Four options are maximum, can't add more options`);
         }
     }
 
@@ -133,7 +133,7 @@ const CreateSurvey = (props) => {
             });
         }
         else{
-            notify('error', 'One option is minimum, failed to remove');
+            notify('error', `One option is minimum, can't remove option`);
         }
     }
 
@@ -264,11 +264,6 @@ const CreateSurvey = (props) => {
             props.history.push('/publish');
         }
     }
-
-
-    console.log(multiOptionsCount);
-    console.log(currMultiOptions);
-
   
     return (
         <div className='createSurvey-container'>
